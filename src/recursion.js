@@ -73,13 +73,13 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-    if (end - start == 2) {
-      return [start + 1];
-    }
-    var arr = range(start, end - 1);
-    arr.push( end - 1 );
-    return arr;  
-  };
+  if (end - start == 2) {
+    return [start + 1];
+  }
+  var arr = range(start, end - 1);
+  arr.push(end - 1);
+  return arr;
+};
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -90,15 +90,24 @@ var exponent = function(a, n) {
   if (n === 0) {
     return 1;
   } else {
-    return a * exponent(a, n-1);
+    return a * exponent(a, n - 1);
   }
 };
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
-// powerOfTwo(16); // true
-// powerOfTwo(10); // false
-var powerOfTwo = function(n) {};
+var powerOfTwo = function(n) {
+  if (n === 1) {
+    return true;
+  } else if (n % 2 != 0 || n === 0) {
+    return false;
+  } else {
+    return powerOfTwo(n / 2);
+  }
+};
+
+// console.log(powerOfTwo(16)); // true
+// console.log(powerOfTwo(10)); // true
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {};
