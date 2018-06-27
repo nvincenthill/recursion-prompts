@@ -6,6 +6,8 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
+
+
 var factorial = function(n) {
   if (n < 0) {
     return null;
@@ -73,6 +75,7 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+<<<<<<< HEAD
   if (end - start == 2) {
     return [start + 1];
   }
@@ -80,22 +83,50 @@ var range = function(x, y) {
   arr.push(end - 1);
   return arr;
 };
+=======
+    // if (x - 1 === y) {
+    //   return [];
+    // }
+    // var arr = range(x, y - 1);
+    // arr.push(y);
+    // return arr;  
+  };
+>>>>>>> b6b83fd179fdbff41c44a622eaf8fac41a2202d1
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64. Here, 8 is the base and 2 is the exponent.
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
+<<<<<<< HEAD
 var exponent = function(a, n) {
   if (n === 0) {
     return 1;
   } else {
     return a * exponent(a, n - 1);
   }
+=======
+var exponent = function(base, exp) {
+  if (exp < 0) {
+    base = (1 / base).toFixed(4);
+    exp = exp * -1;
+  }
+
+  if (exp === 0) {
+    return 1;
+  }
+
+  if (exp === 1) {
+    return base;
+  }
+
+  return (base * exponent(base, exp - 1));
+>>>>>>> b6b83fd179fdbff41c44a622eaf8fac41a2202d1
 };
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
+<<<<<<< HEAD
 var powerOfTwo = function(n) {
   if (n === 1) {
     return true;
@@ -108,12 +139,50 @@ var powerOfTwo = function(n) {
 
 // console.log(powerOfTwo(16)); // true
 // console.log(powerOfTwo(10)); // true
+=======
+// powerOfTwo(16); // true
+// powerOfTwo(10); // false
+var powerOfTwo = function(n) {
+    if (n === 0) {
+      return false;
+    }
+
+    if (n === 1) {
+      return true;
+    }
+
+    if (Number.isInteger(n / 2)) {
+        return powerOfTwo(n / 2)
+    } else {
+      return false;
+    }
+};
+>>>>>>> b6b83fd179fdbff41c44a622eaf8fac41a2202d1
 
 // 9. Write a function that reverses a string.
-var reverse = function(string) {};
+var reverse = function(string) {
+  let result = '';
+  let letters = string.split('');
+
+  if (letters.length === 0) {
+    return result;
+  }
+
+  result += letters[letters.length - 1];
+  return reverse(letters.slice(0, letters.length - 2).join(''));
+};
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {};
+var palindrome = function(string) {
+  var strLen = string.length;
+  if (strLen === 0 || strLen === 1) {
+      return true;
+  }
+  if (string[0] === string[strLen - 1]) {
+      return isPalindrome( string.slice(1, strLen - 1) );
+  }
+  return false;
+};
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
