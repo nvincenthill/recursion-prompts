@@ -7,7 +7,6 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 
-
 var factorial = function(n) {
   if (n < 0) {
     return null;
@@ -103,8 +102,7 @@ var exponent = function(base, exp) {
     return base;
   }
 
-  return (base * exponent(base, exp - 1));
-
+  return base * exponent(base, exp - 1);
 };
 
 // 8. Determine if a number is a power of two.
@@ -125,25 +123,25 @@ var powerOfTwo = function(n) {
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
-  let result = '';
-  let letters = string.split('');
+  let result = "";
+  let letters = string.split("");
 
   if (letters.length === 0) {
     return result;
   }
 
   result += letters[letters.length - 1];
-  return reverse(letters.slice(0, letters.length - 2).join(''));
+  return reverse(letters.slice(0, letters.length - 2).join(""));
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
   var strLen = string.length;
   if (strLen === 0 || strLen === 1) {
-      return true;
+    return true;
   }
   if (string[0] === string[strLen - 1]) {
-      return isPalindrome( string.slice(1, strLen - 1) );
+    return isPalindrome(string.slice(1, strLen - 1));
   }
   return false;
 };
@@ -153,7 +151,25 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-var modulo = function(x, y) {};
+var modulo = function(x, y) {
+  if (y === 0) {
+    return NaN;
+  }
+
+  if (x < 0) {
+    return -modulo(-x, y);
+  } // -27 %  4  -> -(27 % 4)
+
+  if (y < 0) {
+    return modulo(x, -y);
+  } //  27 % -4  ->   27 % 4
+
+  if (x < y) {
+    return x;
+  }
+
+  return modulo(x - y, y);
+};
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
